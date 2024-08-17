@@ -8,77 +8,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        html,
-        body,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: "Roboto", sans-serif;
-        }
-
-        .w3-bar {
-            background-color: #2c2f33 !important;
-        }
-
-        .w3-theme-l1 {
-            background-color: #23272a !important;
-        }
-
-        .w3-theme-l2 {
-            background-color: #23272a !important;
-        }
-
-        .w3-theme-dark {
-            background-color: #2c2f33 !important;
-        }
-
-        .w3-bar-item {
-            color: #99aab5 !important;
-        }
-
-        .w3-bar-item:hover {
-            background-color: #99aab5 !important;
-            color: #23272a !important;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #2c2f33;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            color: #99aab5;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #7289da;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown:hover .dropbtn {
-            background-color: #7289da;
-        }
-
-        footer {
-            color: #99aab5;
-            background-color: #2c2f33;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -86,42 +16,29 @@
     <!-- Navbar -->
     <div class="w3-top">
         <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
-            <a href="index.html" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
-            <a href="about.html" class="w3-bar-item w3-button w3-hide-small w3-hover-white">About</a>
-            <div class="w3-dropdown-hover">
-                <a href="projects.html" class="w3-bar-item w3-button w3-hide-small w3-hover-white dropbtn">Projects</a>
-                <div class="w3-dropdown-content dropdown-content">
-                    <a href="coding.html">Coding</a>
-                    <a href="3dprinting.html">3D Printing</a>
-                </div>
-            </div>
-            <a href="gallery.html" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Gallery</a>
-            <a href="contact.html" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contact</a>
+            <a href="index.html" class="w3-bar-item w3-button w3-hide-small">Home</a>
+            <a href="about.html" class="w3-bar-item w3-button w3-hide-small">About</a>
+            <a href="coding.html" class="w3-bar-item w3-button w3-hide-small">Coding Projects</a>
+            <a href="3dprinting.html" class="w3-bar-item w3-button w3-hide-small">3D Printing Projects</a>
+            <a href="gallery.html" class="w3-bar-item w3-button w3-hide-small">Gallery</a>
+            <a href="contact.html" class="w3-bar-item w3-button w3-hide-small">Contact</a>
         </div>
+    </div>
+
+    <!-- Header Section -->
+    <div class="header-title">
+        <h1>Welcome to Ben Haddley's Projects</h1>
+        <p>Explore my latest coding and 3D printing projects, tutorials, and galleries. Get in touch to collaborate!</p>
     </div>
 
     <!-- Main content -->
-    <div class="w3-main" style="margin-left:0px">
-
-        <div class="w3-row w3-padding-64 w3-theme-dark">
-            <div class="w3-twothird w3-container">
-                <h1 class="w3-text-light-grey">Welcome to Ben Haddley's Projects</h1>
-                <p class="w3-text-grey">Explore my latest coding and 3D printing projects, tutorials, and galleries. Get in touch to collaborate!</p>
-            </div>
-        </div>
-
-        <footer id="myFooter">
-            <div class="w3-container w3-theme-l2 w3-padding-32">
-                <h4>Footer</h4>
-            </div>
-
-            <div class="w3-container w3-theme-l1">
-                <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" style="color: #7289da;">w3.css</a></p>
-            </div>
-        </footer>
-
-        <!-- END MAIN -->
+    <div class="content-container">
+        <p>Here is where the main content of your site will go. You can introduce your projects, share tutorials, or show off your 3D printing designs. This container is centered and limited in width to improve readability and aesthetics, following a Discord-like design.</p>
     </div>
+
+    <footer id="myFooter">
+        <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" style="color: #7289da;">w3.css</a></p>
+    </footer>
 
 </body>
 
