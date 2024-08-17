@@ -6,28 +6,84 @@
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
-    <link rel="stylesheet" href="https://www.w3schools.com/lib/-black.css"> 
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-black.css"> 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto"> 
-    <link rel="stylesheet" href="style.css">
+    <style>
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .project-button {
+            display: block;
+            padding: 10px;
+            text-align: center;
+            background-color: #525252;
+            border: 1px solid #525252;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        .project-button:hover {
+            background-color: #e0e0e0;
+        }
+        .project-button img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .project-button p {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
 </head> 
 <body>
 
 <div class="w3-top">
     <div class="w3-bar  w3-top w3-left-align w3-large">
-            <a href="index.html" class="w3-bar-item w3-button w3-hide-small">Home</a>
-            <a href="about.html" class="w3-bar-item w3-button w3-hide-small">About</a>
-            <a href="coding.html" class="w3-bar-item w3-button w3-hide-small">Coding Projects</a>
-            <a href="3dprinting.html" class="w3-bar-item w3-button w3-hide-small">3D Printing Projects</a>
-            <a href="gallery.html" class="w3-bar-item w3-button w3-hide-small">Gallery</a>
-            <a href="contact.html" class="w3-bar-item w3-button w3-hide-small">Contact</a>
-        </div>
+        <a href="index.html" class="w3-bar-item w3-button w3-hide-small">Home</a>
+        <a href="about.html" class="w3-bar-item w3-button w3-hide-small">About</a>
+        <a href="coding.html" class="w3-bar-item w3-button w3-hide-small">Coding Projects</a>
+        <a href="3dprinting.html" class="w3-bar-item w3-button w3-hide-small">3D Printing Projects</a>
+        <a href="gallery.html" class="w3-bar-item w3-button w3-hide-small">Gallery</a>
+        <a href="contact.html" class="w3-bar-item w3-button w3-hide-small">Contact</a>
+    </div>
 </div>
 
-
 <div class="w3-container w3-padding-64"> 
-    
     <h1>3D Printing Projects</h1> 
-        <p>Explore my 3D printing projects, including designs, models, and finished products.</p> 
-    </div> 
+    <p>Check out my 3D printing projects, from cool military-themed gear to handy everyday tools. I've designed and tested each one, so you can download and print them yourself. Whether you're into tactical stuff like NATO symbols or just need something practical like an MRE spoon or a waterproof cigarette box, there's something here for everyone. Feel free to explore and make them your own!</p>
+
+    <div class="project-grid">
+        <a href="https://thangs.com/designer/Ben%20Haddley/3d-model/Square%20Military%20Canteen%20Based%20on%20Canteen%20-1004512" class="project-button">
+            <img src="https://storage.googleapis.com/thangs-thumbnails/production/68252683-0375-46a7-b7fd-48daef522e57/Graph_Stencil_NATO_Army_Symbols_for_Tactical_Maps.png" alt="Graph Stencil: NATO Army Symbology for Tactical Maps">
+            <p>Graph Stencil: NATO Army Symbology for Tactical Maps</p>
+        </a>
+
+        <a href="https://thangs.com/designer/Ben%20Haddley/3d-model/Square%20Military%20Canteen%20Based%20on%20Canteen%20-1004512" class="project-button">
+            <img src="https://storage.googleapis.com/thangs-thumbnails/production/64e815cc-bf4d-4d45-b89e-29b007329883/4670547044c9c20b3b66f808217ecc2830b6172b6be4a72a530b441a25a163f6/aussie_spoonv3.png" alt="Australian MRE Spoon">
+            <p>Australian MRE Spoon</p>
+        </a>
+
+        <a href="https://thangs.com/designer/Ben%20Haddley/3d-model/chest%20rig%20to%20gopro%20hero4%20adapter%20-1004513" class="project-button">
+            <img src="https://storage.googleapis.com/thangs-thumbnails/production/f67386f1-122b-4bb7-8527-e86419b46242/chest_rig_go_pro.png" alt="Chest Rig to GoPro Hero4 Adapter">
+            <p>Chest Rig to GoPro Hero4 Adapter</p>
+        </a>
+
+        <a href="https://thangs.com/designer/Ben%20Haddley/3d-model/Square%20Military%20Canteen%20Based%20on%20Canteen%20-1004512" class="project-button">
+            <img src="https://thangs.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fthangs-thumbnails%2Fproduction%2F7bb4514f-fd6d-47d1-b61e-5e8883bec302%2Fbottle.png&w=384&q=75" alt="Square Military Canteen Based on Canteen">
+            <p>Square Military Canteen Based on Canteen</p>
+        </a>
+
+        <a href="https://thangs.com/designer/Ben%20Haddley/3d-model/Water-Resistant%20Military%20Cigarette%20Box-1004510" class="project-button">
+            <img src="https://storage.googleapis.com/thangs-thumbnails/production/dbf3827c-e89e-4016-80f5-50dbfd302681/smokers_boxv3.png" alt="Water-Resistant Military Cigarette Box">
+            <p>Water-Resistant Military Cigarette Box</p>
+        </a>
+    </div>
+</div> 
 </body> 
 </html>
