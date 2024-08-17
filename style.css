@@ -1,4 +1,4 @@
-
+/* General Styling */
 html,
 body,
 h1,
@@ -14,6 +14,7 @@ h6 {
     padding: 0;
 }
 
+/* Dropdown Menu */
 .dropdown {
     position: relative;
     display: inline-block;
@@ -61,6 +62,7 @@ h6 {
     color: #ffffff;
 }
 
+/* Footer */
 footer {
     color: #99aab5;
     background-color: #23272a;
@@ -69,6 +71,7 @@ footer {
     margin-top: 20px;
 }
 
+/* Content Container */
 .content-container {
     padding: 64px 20px;
     max-width: 1000px;
@@ -76,6 +79,7 @@ footer {
     background-color: #2c2f33;
 }
 
+/* Header Title */
 .header-title {
     text-align: center;
     padding: 50px 20px;
@@ -93,6 +97,7 @@ footer {
     color: #b9bbbe;
 }
 
+/* Navbar */
 .w3-bar {
     background-color: #2c2f33 !important;
     overflow: hidden;
@@ -111,3 +116,95 @@ footer {
     padding: 16px;
     text-decoration: none;
 }
+
+/* Project Card Styling */
+.project-card {
+    background-color: #2c2f33;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.project-card h2 {
+    color: #7289da;
+    border-bottom: 2px solid #7289da;
+    padding-bottom: 10px;
+}
+
+.project-card p {
+    color: #b9bbbe;
+}
+
+.project-card ul {
+    padding-left: 20px;
+}
+
+.project-card ul li {
+    margin-bottom: 10px;
+}
+
+/* Additional Styling */
+h2 {
+    font-size: 30px;
+    color: #ffffff;
+    transition: color 0.3s ease-in-out;
+}
+
+h2:hover {
+    color: #7289da; /* Change color on hover */
+}
+
+p strong {
+    color: #ffffff;
+    background-color: #7289da; /* Highlight background */
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+button {
+    background-color: #7289da;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #5b6eae;
+}
+
+footer p a {
+    color: #7289da;
+    text-decoration: underline;
+    transition: color 0.3s ease-in-out;
+}
+
+footer p a:hover {
+    color: #ffffff; /* Change color on hover */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+.project-image {
+    display: block; /* Ensures the image is a block element, so text starts below it */
+    width: auto; /* Ensures the image width is at 100% of the set size */
+    max-width: 750px; /* Sets the max width to be 250% of the original (300px * 2.5 = 750px) */
+    height: auto; /* Maintains the aspect ratio to prevent stretching */
+    border-radius: 8px; /* Adds rounded corners */
+    margin-bottom: 15px; /* Adds space below the image */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow for depth */
+    margin-left: left; /* Centers the image horizontally */
+    margin-right: auto; /* Centers the image horizontally */
+}
+
+
+
