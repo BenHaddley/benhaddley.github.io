@@ -6,16 +6,148 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/lib/-black.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-black.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <style>
+        /* General Styling */
+        html, body, h1, h2, h3, h4, h5, h6 {
+            font-family: "Roboto", sans-serif;
+            color: #99aab5;
+            background-color: #2c2f33;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+            height: 400px; /* Ensure consistent height */
+            overflow: hidden; /* Hide overflow */
+        }
+
+        .mySlides {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out; /* Smooth fade-in and fade-out */
+            z-index: 0; /* Default z-index */
+        }
+
+        .mySlides img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the entire slide area */
+        }
+
+        /* Caption text */
+        .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Number text (1/3 etc) */
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+
+        /* Project Card Styling */
+        .card {
+            background-color: #3a3a3a;
+            color: #ffffff;
+            border: none;
+        }
+
+        .card-title {
+            color: #ffffff;
+        }
+
+        .card-body p {
+            color: #d3d3d3;
+        }
+
+        .card-img-top {
+            filter: grayscale(100%);
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .cta-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: #45a049;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Navbar */
+        .w3-bar {
+            background-color: #2c2f33 !important;
+            overflow: hidden;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .w3-bar-item {
+            color: #99aab5 !important;
+            padding: 16px;
+            text-decoration: none;
+        }
+
+        .w3-bar-item:hover {
+            background-color: #7289da !important;
+            color: #ffffff !important;
+        }
+
+        /* Footer Styling */
+        #myFooter {
+            background-color: #2c2f33;
+            color: #99aab5;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #myFooter a {
+            color: #7289da;
+            text-decoration: none;
+        }
+
+        #myFooter a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 
 <body>
 
     <!-- Navbar -->
     <div class="w3-top">
-        <div class="w3-bar  w3-top w3-left-align w3-large">
+        <div class="w3-bar w3-top w3-left-align w3-large">
             <a href="index.html" class="w3-bar-item w3-button w3-hide-small">Home</a>
             <a href="about.html" class="w3-bar-item w3-button w3-hide-small">About</a>
             <a href="coding.html" class="w3-bar-item w3-button w3-hide-small">Coding Projects</a>
@@ -27,18 +159,113 @@
 
     <!-- Header Section -->
     <div class="header-title">
+        <h1>sace</h1>
         <h1>Welcome to Ben Haddley's Projects</h1>
-        <p>Explore my latest coding and 3D printing projects, tutorials, and galleries. Get in touch to collaborate!</p>
+        <p>Showcasing my passion for technology through coding and 3D printing.</p>
+
+        <!-- Slideshow Section -->
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 4</div>
+                <img src="./home_images/meshastic_cases.webp" alt="Meshastic Cases">
+                <div class="text">Meshastic Cases</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 4</div>
+                <img src="./home_images/434727382_908318197591075_2407461677317259359_n.jfif" alt="Outdoor Skills">
+                <div class="text">Outdoor Skills</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 4</div>
+                <img src="./home_images/296629362_154342493856822_386929146281193481_n.jpg" alt="Coding Projects">
+                <div class="text">Coding Projects</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">4 / 4</div>
+                <img src="./home_images/406249706_2667745776733467_235976137719976451_n.jpg" alt="3D Printing">
+                <div class="text">3D Printing</div>
+            </div>
+        </div>
     </div>
 
     <!-- Main content -->
-    <div class="content-container">
-        <p>Here is where the main content of your site will go. You can introduce your projects, share tutorials, or show off your 3D printing designs. This container is centered and limited in width to improve readability and aesthetics, following a Discord-like design.</p>
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Coding Project Card -->
+            <div class="col-md-6">
+                <div class="card mb-4 shadow-sm">
+                    <h5 class="card-title">DefenderAssist NZ</h5>
+                    <img src="DA.png" class="card-img-top" alt="DefenderAssist NZ Screenshot">
+                    <div class="card-body">
+                        <p class="card-text">DefenderAssist NZ is an advanced tool designed to help users efficiently search through the contents of .doc files stored within a directory of folders.</p>
+                        <p class="card-text">This application is particularly useful for users who need to find specific information quickly within a large number of documents.</p>
+                        <a href="coding.html" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3D Printing Project Card -->
+            <div class="col-md-6">
+                <div class="card mb-4 shadow-sm">
+                    <h5 class="card-title">3D Printing Adventure</h5>
+                    <img src="https://storage.googleapis.com/thangs-thumbnails/production/64e815cc-bf4d-4d45-b89e-29b007329883/4670547044c9c20b3b66f808217ecc2830b6172b6be4a72a530b441a25a163f6/aussie_spoonv3.png" class="card-img-top" alt="Australian MRE Spoon">
+                    <div class="card-body">
+                        <p class="card-text">Check out my 3D printing projects, from cool military-themed gear to handy everyday tools.</p>
+                        <p class="card-text">Featured Project: Australian MRE Spoon.</p>
+                        <a href="3dprinting.html" class="btn btn-primary">Explore More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <footer id="myFooter">
-        <p>footer</p>
+        <p>Connect with me on <a href="https://github.com/yourprofile">GitHub</a> | &copy; 2024 Ben Haddley</p>
     </footer>
+
+    <script>
+        let slideIndex = 0;
+        let slides = document.getElementsByClassName("mySlides");
+        showSlides();
+
+        function showSlides() {
+            // Reset all slides to default state
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.opacity = 0;
+                slides[i].style.zIndex = 0;
+            }
+
+            // Increment slideIndex
+            slideIndex++;
+
+            // Reset slideIndex if it exceeds the number of slides
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+
+            // Prepare the current slide
+            let currentSlide = slides[slideIndex - 1];
+            currentSlide.style.zIndex = 1;
+            currentSlide.style.opacity = 1;
+
+            // Display the next slide after a delay (seamless transition)
+            setTimeout(showSlides, 4000); // Change image every 4 seconds
+        }
+
+        // Display the first slide immediately on page load
+        window.onload = function() {
+            if (slides.length > 0) {
+                slides[0].style.opacity = 1; // Ensure the first slide is visible immediately
+                slides[0].style.zIndex = 1;  // Bring the first slide to the front
+            }
+        };
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 
 </body>
 
