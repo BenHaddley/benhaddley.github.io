@@ -6,26 +6,73 @@
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
-    <link rel="stylesheet" href="https://www.w3schools.com/lib/-black.css"> 
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-black.css"> 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto"> 
-    <link rel="stylesheet" href="style.css">
 </head> 
 <body>
 
 <div class="w3-top">
-    <div class="w3-bar  w3-top w3-left-align w3-large">
-            <a href="index.html" class="w3-bar-item w3-button w3-hide-small">Home</a>
-            <a href="about.html" class="w3-bar-item w3-button w3-hide-small">About</a>
-            <a href="coding.html" class="w3-bar-item w3-button w3-hide-small">Coding Projects</a>
-            <a href="3dprinting.html" class="w3-bar-item w3-button w3-hide-small">3D Printing Projects</a>
-            <a href="gallery.html" class="w3-bar-item w3-button w3-hide-small">Gallery</a>
-            <a href="contact.html" class="w3-bar-item w3-button w3-hide-small">Contact</a>
-        </div>
+    <div class="w3-bar w3-top w3-left-align w3-large">
+        <a href="index.html" class="w3-bar-item w3-button w3-hide-small">Home</a>
+        <a href="about.html" class="w3-bar-item w3-button w3-hide-small">About</a>
+        <a href="coding.html" class="w3-bar-item w3-button w3-hide-small">Coding Projects</a>
+        <a href="3dprinting.html" class="w3-bar-item w3-button w3-hide-small">3D Printing Projects</a>
+        <a href="gallery.html" class="w3-bar-item w3-button w3-hide-small">Gallery</a>
+        <a href="contact.html" class="w3-bar-item w3-button w3-hide-small">Contact</a>
+    </div>
 </div>
 
-    <div class="w3-container w3-padding-64"> 
-        <h1>Contact</h1> 
-        <p>Get in touch with me for collaborations, inquiries, or to discuss potential projects.</p> 
-    </div> 
+<div class="content-container"> 
+    <h1>Contact</h1> 
+    <p>Get in touch with me for collaborations, inquiries, or to discuss potential projects.</p> 
+    
+    <!-- Contact Information -->
+    <p><strong>Phone:</strong> +64 022 029 9718</p>
+    <p><strong>Email:</strong> <a href="mailto:Ben@haddley-morris.com">Ben@haddley-morris.com</a></p>
+    <p><strong>Alternative Email:</strong> <a href="mailto:Ben@haddley.com">Ben@haddley.com</a></p>
+
+    <!-- Social Media Links -->
+    <p><strong>Connect with me:</strong></p>
+    <div class="w3-bar">
+        <a href="https://www.facebook.com/profile.php?id=100004942128799" target="_blank" class="w3-bar-item w3-button w3-margin-right">Facebook</a>
+        <a href="https://www.instagram.com/ben_haddley/" target="_blank" class="w3-bar-item w3-button">Instagram</a>
+    </div>
+
+    <!-- Contact via Email -->
+    <h2>Send me a message</h2>
+    <p><label for="name">Name:</label></p>
+    <input id="name" class="w3-input w3-border" type="text" placeholder="Your Name" required>
+    
+    <p><label for="email">Your Email:</label></p>
+    <input id="email" class="w3-input w3-border" type="email" placeholder="Your Email" required>
+    
+    <p><label for="message">Message:</label></p>
+    <textarea id="message" class="w3-input w3-border" rows="5" placeholder="Your Message" required></textarea>
+    
+    <p><button class="w3-button" onclick="sendEmail()">Send</button></p>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div>
+        <a href="https://www.facebook.com/profile.php?id=100004942128799" target="_blank"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
+        <a href="https://www.instagram.com/ben_haddley/" target="_blank"><i class="fa fa-instagram w3-hover-opacity"></i></a>
+    </div>
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+
+<script>
+function sendEmail() {
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var message = document.getElementById('message').value;
+    
+    var subject = encodeURIComponent('Message from ' + name);
+    var body = encodeURIComponent(message + '\n\nFrom: ' + name + '\nEmail: ' + email);
+    
+    window.location.href = 'mailto:Ben@haddley-morris.com?subject=' + subject + '&body=' + body;
+}
+</script>
+
 </body> 
 </html>
