@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A forensic machine-learning investigation into a Solana zero-block sniper bot.">
+  <title>Solana Sniper Bot Reverse-Engineering | Ben Haddley</title>
+  <link rel="canonical" href="https://benhaddley.github.io/projects/solana-sniper-bot-reverse-engineering/">
+  <meta name="author" content="Ben Haddley">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Solana Sniper Bot Reverse-Engineering">
+  <meta property="og:description" content="A forensic machine-learning investigation into a Solana zero-block sniper bot.">
+  <meta property="og:url" content="https://benhaddley.github.io/projects/solana-sniper-bot-reverse-engineering/">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header"><nav class="site-nav" aria-label="Project navigation">
+    <a class="site-name" href="/">Ben Haddley</a>
+    <div class="nav-links"><a href="/">Home</a><a class="active" href="/projects">Projects</a><a href="#features">Features</a><a href="#backtest">Backtest</a></div>
+    <button class="theme-toggle" type="button" aria-label="Toggle colour theme">◐</button>
+  </nav></header>
+  <main class="case-study">
+    <header class="case-study-header">
+      <div class="header-badges"><span class="status-badge">Research in progress</span><span class="topic-badge">Forensic ML</span></div>
+      <h1>Solana Sniper Bot<br>Reverse-Engineering</h1>
+      <div class="case-study-meta"><span>Research project</span><span>·</span><span>2026</span><span>·</span><span>Living case study</span></div>
+      <p class="outcome-summary">Reconstructing how a live wallet chooses pump.fun tokens in the zero block—then testing whether the rule can be replicated without looking into the future.</p>
+      <div class="project-links"><a href="https://github.com/BenHaddley/solana-sniper-bot-reverse-engineering">Source code ↗</a><a href="https://github.com/BenHaddley/solana-sniper-bot-reverse-engineering/tree/main/wiki">Research wiki ↗</a></div>
+    </header>
+    <section class="chain-hero" aria-label="Illustration of the zero-block decision window">
+      <div class="chain-copy"><span class="chain-label">The decision window</span><strong>Deploy <i>→</i> Decide <i>→</i> Buy</strong><p>All inside one Solana slot, before normal price discovery begins.</p></div>
+      <div class="slot-orbit" aria-hidden="true"><span class="orbit-ring"></span><span class="orbit-dot dot-one"></span><span class="orbit-dot dot-two"></span><span class="orbit-core">0</span></div>
+    </section>
+    <div class="score-grid" aria-label="Project constraints and objectives">
+      <div class="score-item"><span class="score-value">1 slot</span><span class="score-label">Decision window</span></div><div class="score-item"><span class="score-value">3 parts</span><span class="score-label">Investigation</span></div><div class="score-item"><span class="score-value">PR-AUC</span><span class="score-label">Primary metric</span></div><div class="score-item"><span class="score-value">0</span><span class="score-label">Leakage tolerance</span></div>
+    </div>
+    <nav class="process-map" aria-label="Investigation process"><span class="process-map-label">Investigation path</span><div class="process-steps"><a href="#observe">Observe behavior</a><a href="#reconstruct">Reconstruct data</a><a href="#features">Freeze features</a><a href="#infer">Infer the rule</a><a href="#backtest">Backtest honestly</a></div></nav>
+    <section class="case-study-section"><h2>How the investigation is taking shape</h2><p class="journey-intro">This is not a token-pump prediction exercise. It is a time-bounded reconstruction of what the bot could know at the instant it commits capital.</p>
+      <div class="journey">
+        <section class="journey-step" id="observe"><span class="phase-label">Phase 1 · Establish the behavior</span><h3>Start with what the wallet actually does</h3><p>The target buys only a subset of new launches and enters in the deployment slot. The first job is to quantify buy timing, in-block position, entry size, exits, holding time, and realized P&amp;L before proposing any explanation.</p><div class="pipeline">deploy event → target buy → exit path → trade-level outcome</div></section>
+        <section class="journey-step" id="reconstruct"><span class="phase-label">Phase 2 · Build the candidate universe</span><h3>Turn chain activity into one row per decision</h3><p>Every eligible deployment becomes a candidate. Tokens connect to deployers, funding wallets, transactions, metadata, trades, and eventual outcomes—but each field receives an explicit availability time.</p><div class="entity-map"><div><small>Wallet</small><strong>Funding context</strong></div><i>→</i><div><small>Deployer</small><strong>Prior history</strong></div><i>→</i><div class="entity-focus"><small>Token</small><strong>Decision row</strong></div><i>→</i><div><small>Outcome</small><strong>Evaluation only</strong></div></div></section>
+        <section class="journey-step" id="features"><span class="phase-label">Phase 3 · Enforce the cutoff</span><h3>Keep only what existed at <code>t_decision</code></h3><p>Deployer history, wallet maturity, funding provenance, deployment construction, metadata, and timing are plausible inputs. Bonding-curve movement, later trades, and future deployer outcomes are not.</p>
+          <div class="cutoff-widget" data-cutoff-widget><div class="widget-head"><div><h4>Feature availability audit</h4><span>Switch views to inspect the entry-model boundary.</span></div><div class="widget-tabs"><button class="widget-tab active" data-view="decision">At decision</button><button class="widget-tab" data-view="future">After launch</button></div></div>
+            <div class="feature-panel" data-panel="decision"><div class="feature-grid"><div><small>Deployer</small><strong>Past deploy count</strong><span class="allowed">Allowed</span></div><div><small>Wallet</small><strong>Age &amp; provenance</strong><span class="allowed">Allowed</span></div><div><small>Transaction</small><strong>Dev-buy structure</strong><span class="allowed">Allowed</span></div><div><small>Token</small><strong>Name &amp; metadata</strong><span class="allowed">Allowed</span></div></div></div>
+            <div class="feature-panel" data-panel="future" hidden><div class="feature-grid"><div><small>Market</small><strong>Bonding-curve move</strong><span class="blocked">Blocked</span></div><div><small>Token</small><strong>Future migration</strong><span class="blocked">Blocked</span></div><div><small>Traders</small><strong>Later holder count</strong><span class="blocked">Blocked</span></div><div><small>Deployer</small><strong>Future outcomes</strong><span class="blocked">Blocked</span></div></div></div>
+          </div><div class="evidence"><strong>The non-negotiable rule:</strong> post-deployment data can measure whether a trade worked, but it cannot help decide whether to enter that trade.</div>
+        </section>
+        <section class="journey-step" id="infer"><span class="phase-label">Phase 4 · Infer a policy, not just a score</span><h3>Test a small set of explainable hypotheses</h3><p>The leading candidates are deployer reputation, wallet maturity, dev-buy intent, metadata quality, timing, and wallet-network relationships. An interpretable model can rank these signals while keeping the learned rule open to challenge.</p><div class="hypothesis-list"><div><span>01</span><p><strong>Known operators</strong>Prior successful deployers may dominate selection.</p></div><div><span>02</span><p><strong>Credible capital</strong>Wallet age and funding links may expose disposable accounts.</p></div><div><span>03</span><p><strong>Launch construction</strong>Dev-buy size and transaction context may reveal intent.</p></div></div></section>
+        <section class="journey-step" id="backtest"><span class="phase-label">Phase 5 · Replicate under friction</span><h3>Make the backtest earn its conclusion</h3><p>The score threshold is fixed on an earlier time window, then applied out of time. The replica is compared head-to-head with the target on overlap, P&amp;L, hit rate, and drawdown, with fees, slippage, and one- to two-slot delays made visible.</p><div class="pipeline">train window → threshold lock → later deployments → delayed execution → comparison</div><p><a class="inline-link" href="https://github.com/BenHaddley/solana-sniper-bot-reverse-engineering/blob/main/wiki/backtest-plan.md">Read the backtest plan ↗</a></p></section>
+      </div>
+    </section>
+    <section class="case-study-section learning-panel"><span class="phase-label">Current principles</span><h2>What will make the result credible</h2><ul><li>Every feature has an auditable timestamp and cutoff rule.</li><li>Model quality is measured out of time and with imbalance-aware metrics.</li><li>The final hypothesis is readable enough to challenge.</li><li>Execution delay, fees, slippage, and failed assumptions remain in the report.</li></ul></section>
+    <div class="back-link-container"><a href="/projects">← All projects</a></div>
+  </main>
+  <footer class="site-footer"><span>© 2026 Ben Haddley</span><a href="https://github.com/BenHaddley">GitHub</a></footer>
+  <script>
+    const root=document.documentElement,saved=localStorage.getItem('sniper-theme');if(saved)root.dataset.theme=saved;
+    document.querySelector('.theme-toggle').addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';localStorage.setItem('sniper-theme',root.dataset.theme)});
+    document.querySelectorAll('[data-cutoff-widget]').forEach(w=>w.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>{w.querySelectorAll('[data-view]').forEach(x=>x.classList.toggle('active',x===b));w.querySelectorAll('[data-panel]').forEach(p=>p.hidden=p.dataset.panel!==b.dataset.view)})));
+  </script>
+</body></html>
