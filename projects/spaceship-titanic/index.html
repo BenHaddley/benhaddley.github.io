@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spaceship Titanic — Machine Learning Journey | Ben Haddley</title>
+  <meta name="description" content="A step-by-step account of building a reproducible machine-learning pipeline for Kaggle's Spaceship Titanic competition.">
+  <link rel="canonical" href="https://benhaddley.github.io/projects/spaceship-titanic/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Spaceship Titanic — Machine Learning Journey">
+  <meta property="og:description" content="From raw passenger data to a validated CatBoost and LightGBM ensemble.">
+  <meta property="og:image" content="https://culturalgutter.com/wp-content/uploads/2021/12/murderbot-network-effect-banner.jpg?w=1024">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/_astro/about.MaxqiJ9v.css">
+  <script>
+    (function () {
+      const saved = localStorage.getItem('theme');
+      const theme = saved || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  <style>
+    .journey-page{max-width:1040px;margin:0 auto;padding:2rem 1.5rem 5rem}.crumb{display:inline-block;margin-bottom:1.5rem;color:var(--color-text-muted);text-decoration:none}.crumb:hover{color:var(--color-accent)}.hero{overflow:hidden;border:1px solid var(--color-border);border-radius:12px;background:var(--color-bg-secondary)}.hero img{display:block;width:100%;max-height:390px;object-fit:cover}.hero-copy{padding:2.5rem}.eyebrow{margin:0 0 .75rem;color:var(--color-accent);font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}.hero h1{margin:0 0 1rem;font-size:clamp(2.2rem,6vw,4rem);line-height:1.05;letter-spacing:-.04em}.lede{max-width:760px;margin:0;color:var(--color-text-secondary);font-size:1.15rem;line-height:1.7}.hero-links{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}.button{display:inline-flex;padding:.7rem 1rem;border:1px solid var(--color-border);border-radius:6px;color:var(--color-text);font-weight:600;text-decoration:none}.button.primary{border-color:var(--color-accent);background:var(--color-accent);color:#fff}.image-credit{margin:.5rem 0 0;text-align:right;font-size:.7rem;color:var(--color-text-muted)}.image-credit a{color:inherit}.score-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:3rem 0;background:var(--color-border);border:1px solid var(--color-border);border-radius:10px;overflow:hidden}.score{padding:1.25rem;background:var(--color-bg-secondary)}.score strong{display:block;font-size:1.5rem;color:var(--color-text)}.score span{font-size:.8rem;color:var(--color-text-muted)}.section-heading{margin:4rem 0 2rem}.section-heading h2{margin:0 0 .5rem;font-size:2rem}.section-heading p{max-width:700px;margin:0;color:var(--color-text-secondary);line-height:1.7}.timeline{counter-reset:phase;position:relative;margin-left:1.25rem;padding-left:2.5rem;border-left:1px solid var(--color-border)}.phase{counter-increment:phase;position:relative;margin:0 0 3.5rem}.phase:before{content:counter(phase);position:absolute;left:-3.75rem;top:-.25rem;width:2.35rem;height:2.35rem;display:grid;place-items:center;border:1px solid var(--color-accent);border-radius:50%;background:var(--color-bg);color:var(--color-accent);font-weight:700}.phase-tag{display:block;margin-bottom:.35rem;color:var(--color-text-muted);font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.phase h3{margin:0 0 .75rem;font-size:1.4rem}.phase p{max-width:720px;margin:.5rem 0;color:var(--color-text-secondary);font-size:1.02rem;line-height:1.7}.finding{max-width:720px;margin:1rem 0;padding:1rem 1.25rem;border-left:3px solid var(--color-accent);background:var(--color-bg-secondary);color:var(--color-text)}.flow{margin:1rem 0;padding:1rem;border:1px solid var(--color-border);border-radius:8px;background:var(--color-bg-elevated);overflow-x:auto;color:var(--color-text-secondary);font:600 .88rem/1.8 ui-monospace,SFMono-Regular,Menlo,monospace}.result{margin-top:4rem;padding:2rem;border:1px solid var(--color-border);border-radius:10px;background:var(--color-bg-secondary)}.result h2{margin-top:0}.result p{color:var(--color-text-secondary);line-height:1.7}.result ul{padding-left:1.25rem;color:var(--color-text-secondary);line-height:1.8}.site-footer{border-top:1px solid var(--color-border)}.footer-container{max-width:1040px;margin:auto;padding:1.5rem;display:flex;justify-content:space-between;color:var(--color-text-muted);font-size:.85rem}.footer-container a{color:inherit}@media(max-width:700px){.journey-page{padding:1rem 1rem 3rem}.hero-copy{padding:1.5rem}.score-strip{grid-template-columns:1fr 1fr}.timeline{margin-left:.75rem;padding-left:1.75rem}.phase:before{left:-3rem}.footer-container{gap:1rem;flex-direction:column}}
+  </style>
+</head>
+<body>
+  <header class="site-header"><nav class="site-nav" aria-label="Main navigation"><div class="nav-scroll"><ul class="nav-list"><li class="nav-item"><a href="/" class="nav-link">Home</a></li><li class="nav-item"><a href="/projects" class="nav-link nav-link--active" aria-current="page">Projects</a></li><li class="nav-item"><a href="/prints" class="nav-link">3D Prints</a></li><li class="nav-item"><a href="/writing" class="nav-link">Writing</a></li><li class="nav-item"><a href="/about" class="nav-link">About</a></li><li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li></ul></div></nav></header>
+  <main class="journey-page">
+    <a class="crumb" href="/projects">← All projects</a>
+    <article>
+      <header class="hero">
+        <img src="https://culturalgutter.com/wp-content/uploads/2021/12/murderbot-network-effect-banner.jpg?w=1024" alt="Science-fiction spaceship artwork">
+        <div class="hero-copy">
+          <p class="eyebrow">Machine learning · Python · 2026</p>
+          <h1>Spaceship Titanic</h1>
+          <p class="lede">I built this as a complete machine-learning project, not a one-off notebook: understand the passengers, turn patterns into defensible features, compare models on identical folds, analyse their mistakes, and only then generate a Kaggle submission.</p>
+          <div class="hero-links"><a class="button primary" href="https://github.com/BenHaddley/spaceship-titanic">View source on GitHub</a><a class="button" href="https://www.kaggle.com/competitions/spaceship-titanic/overview">Competition</a></div>
+        </div>
+      </header>
+      <p class="image-credit">Banner via <a href="https://culturalgutter.com/wp-content/uploads/2021/12/murderbot-network-effect-banner.jpg?w=1024">Cultural Gutter</a></p>
+
+      <div class="score-strip" aria-label="Model score progression">
+        <div class="score"><strong>0.786</strong><span>baseline logistic regression</span></div>
+        <div class="score"><strong>0.792</strong><span>engineered features</span></div>
+        <div class="score"><strong>0.8155</strong><span>CatBoost</span></div>
+        <div class="score"><strong>0.8171</strong><span>final ensemble</span></div>
+      </div>
+
+      <div class="section-heading"><h2>How the project came together</h2><p>Each step had an exit criterion. That kept model improvements attributable and stopped the leaderboard becoming the development set.</p></div>
+      <div class="timeline">
+        <section class="phase"><span class="phase-tag">Phase 0 · Reproducibility first</span><h3>Set up the project properly</h3><p>I pinned Python 3.12 and every dependency with <code>uv</code>, authenticated the Kaggle CLI, and separated source code, notebooks, data, models, reports, and submissions. A fresh clone can recreate the same environment with one command.</p><div class="flow">uv sync → Kaggle CLI → train.csv / test.csv → versioned pipeline code</div></section>
+        <section class="phase"><span class="phase-tag">Phase 1 · Understand before optimising</span><h3>Investigated the passenger data</h3><p>Exploratory analysis established a balanced target, low and consistent missingness, no obvious train/test drift, and several pieces of structure hidden inside IDs, cabins, names, and spending.</p><div class="finding"><strong>The strongest discovery:</strong> 81.8% of CryoSleep passengers were transported, compared with 32.9% of passengers who were awake. None of the 3,037 CryoSleep passengers had non-zero amenity spending.</div><p>Groups always shared a HomePlanet, deck mattered, children behaved differently from adults, and surnames revealed family relationships that passenger groups alone did not capture.</p></section>
+        <section class="phase"><span class="phase-tag">Phase 2 · Establish a trustworthy floor</span><h3>Built the simplest complete pipeline</h3><p>The baseline median-imputed numerical fields, filled categorical gaps with the most frequent value, one-hot encoded categories, scaled numbers, and trained logistic regression. Five-fold stratified cross-validation produced <strong>0.786 ± 0.010</strong>.</p><div class="flow">CSV → impute → encode / scale → logistic regression → five-fold CV</div></section>
+        <section class="phase"><span class="phase-tag">Phase 3 · Turn findings into features</span><h3>Extracted the structure EDA revealed</h3><p>Passenger IDs became group size and position. Cabins became deck, cabin number, and side. Names became surname-based family size. Five amenity columns became total spend and a no-spend flag.</p><p>I also encoded only evidence-backed imputation rules: positive spending can prove <code>CryoSleep=False</code>, while known groupmates can supply HomePlanet and sometimes deck. Keeping logistic regression fixed, these features raised CV accuracy to <strong>0.792</strong>.</p></section>
+        <section class="phase"><span class="phase-tag">Phase 4 · Compare model families fairly</span><h3>Moved from a linear model to boosting</h3><p>Every candidate used the same engineered data and the same folds. XGBoost reached 0.795, LightGBM 0.809, and CatBoost <strong>0.8155</strong>. A 40-trial Optuna search found no meaningful improvement over default CatBoost—useful evidence that more tuning was not automatically better.</p></section>
+        <section class="phase"><span class="phase-tag">Phase 5 · Test whether diversity helps</span><h3>Combined models carefully</h3><p>Equal-weight voting actually reduced accuracy because weaker models pulled CatBoost in the wrong direction. Weighting CatBoost and LightGBM 4:1 produced the best measured result: <strong>0.8171 ± 0.006</strong>.</p><div class="finding">Ensembling was not free performance. The useful blend stayed close to the strongest model and gave the weaker model only enough influence to correct a small number of mistakes.</div></section>
+        <section class="phase"><span class="phase-tag">Phase 6 · Study what remained wrong</span><h3>Generated leakage-safe out-of-fold errors</h3><p>For every training passenger, the analysis stored a probability from a fold that had never trained on that passenger. CatBoost made 1,604 errors; the ensemble made 1,590. They disagreed on just 162 of 8,693 rows: the ensemble fixed 88 CatBoost errors and introduced 74 of its own.</p><p>The most difficult broad slices included eight-person groups, destination PSO J318.5-22, deck G, Earth passengers, and children. None exposed a clean, defensible correction, so I stopped rather than hand-fit rules to cross-validation noise.</p></section>
+        <section class="phase"><span class="phase-tag">Phase 7 · Ready for submission</span><h3>Package the result, not just the model</h3><p>The repository now trains reproducibly, saves fitted artifacts, predicts <code>test.csv</code>, and writes a correctly shaped <code>PassengerId,Transported</code> submission. The leaderboard has deliberately been held back until the final candidate is chosen.</p></section>
+      </div>
+
+      <section class="result"><h2>What I learned</h2><ul><li>Good EDA produced more reliable gains than blind hyperparameter search.</li><li>Keeping folds and features fixed made every model comparison explainable.</li><li>A nominally better ensemble can still be effectively tied with a simpler model.</li><li>Error analysis is also a stopping tool: sometimes the honest next step is not another feature.</li></ul><p><strong>Current best:</strong> a 4:1 CatBoost/LightGBM soft-vote at 0.8171 ± 0.006 cross-validation accuracy. The full code, wiki, commands, and experiment history are available in the public repository.</p></section>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="footer-container"><span>© 2026 Ben Haddley</span><a href="https://github.com/BenHaddley">GitHub</a></div></footer>
+</body>
+</html>
