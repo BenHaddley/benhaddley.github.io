@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" role="img" aria-labelledby="title desc">
+  <title id="title">Cross-validation model score progression</title><desc id="desc">Accuracy improved from 0.786 for baseline logistic regression to 0.8171 for the final ensemble.</desc>
+  <rect width="900" height="470" rx="16" fill="#111"/><text x="48" y="54" fill="#fafafa" font-family="system-ui,sans-serif" font-size="25" font-weight="700">What actually improved the score</text><text x="48" y="84" fill="#a3a3a3" font-family="system-ui,sans-serif" font-size="15">Stratified five-fold cross-validation accuracy</text>
+  <g font-family="system-ui,sans-serif"><line x1="285" y1="112" x2="285" y2="408" stroke="#333"/><line x1="522" y1="112" x2="522" y2="408" stroke="#333"/><line x1="758" y1="112" x2="758" y2="408" stroke="#333"/><text x="269" y="430" fill="#737373" font-size="13">0.78</text><text x="506" y="430" fill="#737373" font-size="13">0.80</text><text x="742" y="430" fill="#737373" font-size="13">0.82</text>
+  <text x="48" y="153" fill="#e5e5e5" font-size="16">Baseline logreg</text><rect x="285" y="130" width="71" height="34" rx="5" fill="#525252"/><text x="370" y="153" fill="#fafafa" font-size="17" font-weight="700">0.786</text>
+  <text x="48" y="224" fill="#e5e5e5" font-size="16">+ engineered features</text><rect x="285" y="201" width="142" height="34" rx="5" fill="#737373"/><text x="441" y="224" fill="#fafafa" font-size="17" font-weight="700">0.792</text>
+  <text x="48" y="295" fill="#e5e5e5" font-size="16">CatBoost</text><rect x="285" y="272" width="420" height="34" rx="5" fill="#3b82f6"/><text x="719" y="295" fill="#fafafa" font-size="17" font-weight="700">0.8155</text>
+  <text x="48" y="366" fill="#e5e5e5" font-size="16">4:1 ensemble</text><rect x="285" y="343" width="439" height="34" rx="5" fill="#60a5fa"/><text x="738" y="366" fill="#fafafa" font-size="17" font-weight="700">0.8171</text></g>
+</svg>
