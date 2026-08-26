@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Battle Stations — A Hand-Drawn Comic Tower Defense Built With an AI Pair Programmer | Ben Haddley</title>
-  <meta name="description" content="A tower-defense game where the turrets are train cars: Godot 4, a procedurally generated railway, hand-drawn comic art direction, and an AI pair-programming workflow verified by actually launching the build and screenshotting it.">
+  <meta name="description" content="How I actually built Battle Stations: recovering an old Unity prototype, iterating in small playable increments with an AI coding assistant, and using screenshots of the real running build as the feedback loop — not just the finished result.">
   <link rel="canonical" href="https://benhaddley.github.io/projects/battle-stations/">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Battle Stations — A Hand-Drawn Comic Tower Defense Built With an AI Pair Programmer">
-  <meta property="og:description" content="A tower-defense game where the turrets are train cars: Godot 4, a procedurally generated railway, hand-drawn comic art direction, and an AI pair-programming workflow verified by actually launching the build and screenshotting it.">
+  <meta property="og:description" content="How I actually built Battle Stations: recovering an old Unity prototype, iterating in small playable increments with an AI coding assistant, and using screenshots of the real running build as the feedback loop — not just the finished result.">
   <meta property="og:image" content="https://benhaddley.github.io/projects/battle-stations/images/cover.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -51,90 +51,177 @@
       <div class="case-study-meta">
         <span class="meta-item">Creator</span><span class="meta-separator">·</span>
         <span class="meta-item">2026</span><span class="meta-separator">·</span>
-        <span class="meta-item">6 min read</span>
+        <span class="meta-item">9 min read</span>
       </div>
-      <p class="outcome-summary">A tower-defense game where the turrets are train cars, not towers. Illustrated toy trains patrol a procedurally generated tabletop railway, defending against paper spiders converging from every side — built in Godot 4 and shipped straight to the browser through GitHub Actions.</p>
+      <p class="outcome-summary">A tower-defense game where the turrets are train cars, not towers — and, more than that, a record of how I actually build with an AI coding assistant: recover what exists, define one small goal, implement it, launch the real build, screenshot it, compare it against the target, and feed the gap into the next iteration.</p>
       <a class="play-cta" href="https://benhaddley.github.io/battlestations/" target="_blank" rel="noopener noreferrer">
         Play it in your browser
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M15.7071 5.29289C15.3166 4.90237 14.6834 4.90237 14.2929 5.29289C13.9024 5.68342 13.9024 6.31658 14.2929 6.70711L18.5858 11L3 11C2.44772 11 2 11.4477 2 12C2 12.5523 2.44772 13 3 13L18.5858 13L14.2929 17.2929C13.9024 17.6834 13.9024 18.3166 14.2929 18.7071C14.6834 19.0976 15.3166 19.0976 15.7071 18.7071L21.7071 12.7071C22.0976 12.3166 22.0976 11.6834 21.7071 11.2929L15.7071 5.29289Z"></path></svg>
       </a>
     </header>
 
-    <section class="image-gallery">
-      <img src="images/01-title.jpg" alt="Battle Stations title screen — an illustrated dispatch office with two conductors and a live preview of the board behind them" loading="lazy">
-      <img src="images/02-combat.jpg" alt="A single-car train under attack from a swarm of spiders converging on it from every lane" loading="lazy">
-      <img src="images/03-track.jpg" alt="The procedurally generated courtyard railway winding across the board, with spiders approaching down every lane" loading="lazy">
+    <div class="game-embed">
+      <iframe src="https://benhaddley.github.io/battlestations/" title="Battle Stations — live build" loading="lazy" allow="autoplay"></iframe>
+      <div class="game-embed-caption">
+        <span>This is the actual live build, embedded — not a screenshot.</span>
+        <a href="https://benhaddley.github.io/battlestations/" target="_blank" rel="noopener noreferrer">Open full-screen →</a>
+      </div>
+    </div>
+
+    <section class="case-study-section">
+      <h2>The Idea</h2>
+      <p>Battle Stations is a browser tower-defense game with one twist: there are no towers. Every defense — a machine-gun car, a slowing car, a splash-damage cannon car — is a piece of rolling stock you drag onto a moving train, and the train itself is the thing patrolling the board and fighting for you. Spiders spawn around the edges of a tabletop-sized courtyard and walk toward a station at the bottom; your trains have to intercept them along the way.</p>
+      <figure style="margin: 1.5rem 0 0; max-width: 480px;">
+        <img src="images/01-title.jpg" alt="Battle Stations title screen — an illustrated dispatch office with two conductors" style="border: 1px solid var(--color-border); border-radius: 8px; width: 100%; display: block;">
+      </figure>
     </section>
 
     <section class="case-study-section">
-      <h2>Overview</h2>
-      <p>Battle Stations is a browser tower-defense game with one twist: there are no towers. Every defense — a machine-gun car, a slowing car, a splash-damage cannon car — is a piece of rolling stock you drag onto a moving train, and the train itself is the thing patrolling the board and fighting for you. Spiders spawn around the edges of a tabletop-sized courtyard and walk toward a station at the bottom; your train, or trains, have to intercept them along the way.</p>
-      <p>It's built in Godot 4 (GDScript), exports straight to WebAssembly, and deploys itself: every push to the repo triggers a GitHub Actions workflow that builds the Web export and publishes it to GitHub Pages. <a href="https://benhaddley.github.io/battlestations/" target="_blank" rel="noopener noreferrer">The live build</a> is always whatever's on the main branch.</p>
+      <h2>The Starting Point</h2>
+      <div class="image-gallery" style="margin-bottom: 1.5rem;">
+        <img src="images/06-recovered-reference.jpg" alt="Recovered illustrated board reference art from the original 2023 Unity project — courtyard, rails, and equipment cabinets" loading="lazy">
+      </div>
+      <p>Battle Stations didn't start as a Godot project, or even as a clear design document. It started as an incomplete Unity prototype from late 2023 — recovered scenes named <code>Battlestations2.0.unity</code> through <code>4.0</code>, a folder of illustrated UI art, and a trail of old Discord messages describing a train-and-engine concept that never got fully built. Rather than reverse-engineer intent from filenames, the first real decision was to snapshot that project untouched into <code>legacy_unity/</code> and treat it as evidence, not as a spec.</p>
+      <p>That evidence turned out to matter. A deleted Google Sheet titled "battle stations unit concepts," preserved only in a Discord link preview, listed four engines — Steam ($300, carries up to 5 cars), Diesel ($375, slower, up to 7 cars), Electric ($250, faster, up to 3 cars), and Oil ($350, description cut off). None of that survived into the recovered gameplay scripts. The project wiki keeps an explicit <a href="https://github.com/BenHaddley/battlestations/blob/main/wiki/history-and-sources.md" target="_blank" rel="noopener noreferrer">evidence hierarchy</a> for exactly this reason: active code beats archived code beats old chat logs beats "the filename implies this." A roadmap line makes the same rule operational: <em>separate recovered facts from new design decisions.</em></p>
     </section>
 
     <section class="case-study-section">
-      <h2>Approach</h2>
-      <p>The whole interface is built around one constraint: it has to look like a hand-drawn comic board game, not a clean web app. Thick uneven black outlines, warm burgundy and bright cyan, paper and ink texture, a handwriting font (Architects Daughter) for anything that would normally be UI chrome. The shop tray on the left is a crooked 2×5 grid of illustrated cards — some are real, purchasable train cars, a few are deliberately fake joke cards ("Web Whacker," "Bug Zapper!") that exist purely because a tidy inventory grid didn't feel like a toy box.</p>
-      <p>Underneath that, the actual game loop is standard tower-defense math: a currency wallet, wave-scaled spider health and spawn rate, per-car weight that slows a train down past a threshold, and a procedurally generated courtyard railway so the board isn't identical every run.</p>
-      <p>Most of it was built working turn-by-turn with Claude Code as a pair programmer rather than writing every line by hand — describing a mechanic or pasting in a mockup image, then reading and adjusting the generated GDScript and scene files directly.</p>
+      <h2>My Development Methodology</h2>
+      <p>The project's own roadmap states the working rules directly, and I've stuck to them closely enough that I can just quote them:</p>
+      <ul class="constraints-list">
+        <li>Keep every phase playable before advancing to the next</li>
+        <li>Separate recovered facts from new design decisions</li>
+        <li>Test in the browser once a Web export exists, not only in the editor</li>
+        <li>Record playtest observations before changing balance formulas</li>
+      </ul>
+      <p>In practice that turns into a loop, repeated for every mechanic, every UI change, and every bug fix:</p>
+      <ol class="flow-list">
+        <li>Define one specific goal</li>
+        <li>Implement it with an AI coding assistant</li>
+        <li>Launch the real build</li>
+        <li>Interact with it and capture a screenshot</li>
+        <li>Compare the result against the target</li>
+        <li>Identify the specific mismatch</li>
+        <li>Fix it, verify again, commit, deploy</li>
+      </ol>
+      <p>The screenshots aren't presentation material tacked on afterward — they're the mechanism that tells the next iteration what to do. A few of those iterations below.</p>
     </section>
 
-    <section class="case-study-section" id="key-decisions">
-      <h2>Key Decisions</h2>
-      <div class="decisions-list">
-        <div class="decision-item">
-          <h3 class="decision-title">Turrets are train cars, not towers</h3>
-          <div class="decision-reasoning">
-            <strong>Reasoning:</strong>
-            <p>A standard tower-defense turret sits still. Making every weapon a car you couple onto a moving engine instead does two things at once: it gives the trains an actual reason to exist as a game object (rather than being purely decorative), and it means the board reads as "toys defending themselves" rather than "a grid with gun emplacements on it." The tradeoff is real — a turret that's also constantly repositioning is harder to reason about for both the player and the code (target acquisition, follow-the-engine's-movement-history logic, what happens when a car's train reverses direction) — but it's the choice that actually matches the illustrated reference the whole project is chasing.</p>
-          </div>
-        </div>
-        <div class="decision-item">
-          <h3 class="decision-title">Verify UI changes by actually launching the build, not by reading the diff</h3>
-          <div class="decision-reasoning">
-            <strong>Reasoning:</strong>
-            <p>Godot scene files are plain text, so it's tempting to trust that a diff "looks right" and move on. In practice, running the actual game — headless in CI, and in an isolated virtual display with real mouse events for anything interactive — caught things a code review never would. The clearest example: a button central to starting a wave had <code>visible = false</code> baked into the scene from the very first commit it was added in. It had been silently dead the entire time, masked by an unrelated auto-start timer that made the button unnecessary. The moment that timer was removed as part of an unrelated change, launching the build and looking at the screen — not reading the script — is what caught it before it shipped as a soft-lock.</p>
-          </div>
-          <div class="decision-alternatives">
-            <strong>What that verification loop looks like in practice:</strong>
-            <ul>
-              <li>Headless Godot (<code>--headless --quit-after N</code>) to catch script/scene parse errors on every meaningful change</li>
-              <li>A throwaway Xvfb display plus real synthetic mouse events for anything that needs an actual interaction — dragging a card onto a train, pausing, clicking a button — because a screenshot of a static scene doesn't prove the input handling underneath it works</li>
-              <li>Screenshotting a clean git worktree at the last-pushed commit specifically, rather than the working tree, whenever a claim needs to match what's actually live</li>
-            </ul>
-          </div>
-        </div>
-        <div class="decision-item">
-          <h3 class="decision-title">A file sitting on disk isn't the same as a file that's committed</h3>
-          <div class="decision-reasoning">
-            <strong>Reasoning:</strong>
-            <p>A player reported that newly added turret cars were invisible once placed on the board — no error, no missing-texture checkerboard, just nothing there. Every local test said otherwise: the Chaingun, the Tender, the reskinned Gunner and Ballast all rendered perfectly, over and over, across a dozen fresh launches. The scene files were right. The art was right. The bug wasn't in the code at all — it was in git. The <code>.tscn</code> files referencing the new artwork had been committed, but the actual PNGs they pointed at never got <code>git add</code>ed, so they only ever existed on the machine that made them. Every local checkout still had the files physically sitting in the working tree regardless of what git thought was tracked, which is exactly why local testing kept passing while the deployed build — built from a clean checkout with nothing extra lying around — silently had no texture to load.</p>
-          </div>
-          <div class="decision-alternatives">
-            <strong>How it was actually found:</strong>
-            <ul>
-              <li>Cross-referenced every asset path inside every committed scene/script/resource against <code>git ls-files</code>, rather than trusting that "it's in the folder" meant "it's in the repo"</li>
-              <li>Confirmed the fix against a <code>git worktree</code> checked out at the exact commit — the same isolation a CI runner or a fresh clone gets — instead of the working directory, which still had every untracked file sitting right there to mask the problem</li>
-              <li>Re-verified by actually purchasing and placing each affected car in that clean checkout before pushing, not just checking that the import step ran without errors</li>
-            </ul>
-          </div>
-        </div>
+    <section class="case-study-section">
+      <h2>Building the First Playable Version</h2>
+      <div class="compare-row">
+        <figure>
+          <img src="images/04-first-playable.jpg" alt="The earliest working Godot build — flat colored panels, a single reversing rail path, plain sidebar labeled Prototype dot Web build">
+          <figcaption><strong>First playable</strong>Flat panels, one rail loop, no illustration yet</figcaption>
+        </figure>
+      </div>
+      <p>The first objective wasn't visual quality — it was the minimum combat loop: spawn spiders, move them down the board, let a turret acquire a target and fire, register a kill, pay out currency. Ugly, but real, and playable end to end before anything else was allowed to change.</p>
+      <p>Porting eleven gameplay scripts across two engines surfaced exactly the kind of problem that only shows up when you actually run the thing: inherited Unity range and speed values didn't translate directly into Godot's world scale, so a turret with a "correct" number on paper couldn't actually reach a spider on screen. One commit from this stretch, <a href="https://github.com/BenHaddley/battlestations/commit/98c08903d6c8a5aa1ead575b21a4a3eb5557d400" target="_blank" rel="noopener noreferrer"><code>98c0890</code></a>, exists specifically to fix the engine driving backward — the locomotive sprite's forward direction in the source art didn't match the direction the movement code assumed, so the whole train patrolled its route in reverse until someone actually watched it move.</p>
+    </section>
+
+    <section class="case-study-section">
+      <h2>Finding the Visual Direction</h2>
+      <p>Once the loop worked, the interface still looked like a generic web dashboard sitting on top of it. The recovered reference art — full-height illustrated cabinets, a turquoise-and-yellow card tray, hand-inked rails — became the actual target to converge on, not a mood board to describe in prose. A sequence of real commits tracks the convergence: <a href="https://github.com/BenHaddley/battlestations/commit/5900295e2ea67ec7623fd17e639686569c46f93d" target="_blank" rel="noopener noreferrer">redesign the gameplay screen as an illustrated tabletop</a>, <a href="https://github.com/BenHaddley/battlestations/commit/d0ec59e" target="_blank" rel="noopener noreferrer">turn the shop sidebar into a comic card tray</a>, <a href="https://github.com/BenHaddley/battlestations/commit/fa6b126fa81a41a804004859aa4605eed0fa97d7" target="_blank" rel="noopener noreferrer">align the interface and rails with the illustrated reference</a>.</p>
+      <p>Handing an AI coding assistant the reference image directly, and asking it to match proportions, panel treatment, and line weight against that image, produced a closer result than describing the target in words ever did. "More hand-drawn" is subjective; "this panel's corner radius and border weight should match that panel's" is a concrete, checkable difference.</p>
+    </section>
+
+    <section class="case-study-section">
+      <h2>Designing the Railway</h2>
+      <p>The procedural track generator went through real, documented failures of its own. The original approach swept a path back and forth across the board and simply reversed direction at each end — technically a route, but not a railway. It worked, but it read as a train running out of track and backing up, over and over, rather than a circuit. <a href="https://github.com/BenHaddley/battlestations/commit/847b7643397e033af9555d52d1904bd0a5a23f26" target="_blank" rel="noopener noreferrer">A later pass</a> replaced it with closed concentric loops so a train patrols continuously instead, and the generator has kept evolving since — modular grid-aligned circuits are the current approach — while staying under the same constraint the whole time: every generated layout has to remain fully drivable and cover every enemy lane before it's accepted.</p>
+      <div class="compare-row">
+        <figure>
+          <img src="images/04-first-playable.jpg" alt="Early single-sweep reversing railway path on the game board">
+          <figcaption><strong>Earlier</strong>One reversing path</figcaption>
+        </figure>
+        <figure>
+          <img src="images/10-current-loops.jpg" alt="Current closed-loop railway circuits with multiple trains">
+          <figcaption><strong>Current</strong>Closed loops, multiple trains</figcaption>
+        </figure>
       </div>
     </section>
 
-    <section class="case-study-section" id="result-impact">
-      <h2>Result &amp; Impact</h2>
-      <p class="impact-qualitative">The core loop is live and playable: drag a car onto the train, watch it fight, survive the wave, spend the payout on the next car. The courtyard railway regenerates every run, the illustrated shop tray mixes real and joke cards on purpose, and the whole thing ships to a public URL automatically on every push — no manual export or upload step. The roster has grown since launch — a Chaingun car for sustained single-target fire, a non-combat Tender that extends a train's hauling capacity — and the missing-texture bug above shipped and got caught and fixed within the same day it was reported, deploy pipeline included.</p>
+    <section class="case-study-section">
+      <h2>Battle and Station Modes</h2>
+      <p>The run alternates between two explicit states rather than combat happening continuously in the background. STATION mode pauses spawning so a player can look at the board, pick a train, and buy or attach cars with no time pressure; BATTLE mode runs the wave. That split exists directly because of the roadmap's "keep every phase playable" rule extended into runtime: a build phase with no clock isn't a nice-to-have, it's what stops a first-time player from being punished for pausing to think.</p>
+      <div class="compare-row">
+        <figure>
+          <img src="images/08-station-mode.jpg" alt="STATION mode — spawning paused, player free to buy and attach cars">
+          <figcaption><strong>Station</strong>Build phase, no clock running</figcaption>
+        </figure>
+        <figure>
+          <img src="images/09-battle-mode.jpg" alt="BATTLE mode — a wave in progress with spiders converging on multiple trains">
+          <figcaption><strong>Battle</strong>Wave in progress</figcaption>
+        </figure>
+      </div>
     </section>
 
     <section class="case-study-section">
-      <h2>Learnings</h2>
+      <h2>AI-Assisted Development Methodology</h2>
+      <p>Saying "I built this with an AI pair programmer" undersells what the loop actually looks like, and flattens the working relationship into something it isn't. It was never prompt-in, finished-game-out. Each iteration ran through the same explicit chain:</p>
+      <ol class="flow-list">
+        <li>Design intent</li>
+        <li>Break it into one small requirement</li>
+        <li>Hand over the relevant code, assets, or reference image</li>
+        <li>AI implements the change</li>
+        <li>Launch the actual build</li>
+        <li>Interact with it, capture the result</li>
+        <li>Compare against the requirement</li>
+        <li>Identify the specific mismatch</li>
+        <li>Feed that finding into the next iteration</li>
+      </ol>
+      <p>In that loop I was the designer, the requirements engineer, the tester, and the integrator; the AI was an implementation accelerator, not a replacement for any of those roles. The distinction matters because the failures below — an engine driving backward, a railway that reversed instead of circulating, art assets that rendered locally but not in the deployed build — were caught by someone actually running the game and noticing the gap, not by trusting that a generated diff matched the intent.</p>
+    </section>
+
+    <section class="case-study-section">
+      <h2>Testing the Real Build</h2>
+      <p>Godot scene files are plain text, which makes it tempting to trust that a diff "looks right" and move on. In practice, actually running the game — headless in CI, and in an isolated virtual display with real synthetic mouse events for anything interactive — caught things a code review never would.</p>
+      <ul class="constraints-list">
+        <li>Headless Godot (<code>--headless --quit-after N</code>) to catch script and scene parse errors on every meaningful change</li>
+        <li>A throwaway virtual display plus real mouse events for anything that needs actual interaction — dragging a card onto a train, pausing, clicking a button — because a screenshot of a static scene doesn't prove the input handling underneath it works</li>
+        <li>A <code>git worktree</code> checked out at the exact commit being tested, rather than the working directory, whenever a claim needs to match what a clean checkout — a fresh clone, or CI — actually sees</li>
+      </ul>
+    </section>
+
+    <section class="case-study-section" id="bug-case-study">
+      <h2>Bug Case Study: The Turret That Existed Everywhere Except in Git</h2>
+      <p>A player reported that newly added turret cars were invisible once placed on the board. Locally, that report didn't reproduce at all — the Chaingun, the Tender, the reskinned Gunner and Ballast all rendered correctly, over a dozen fresh launches. The scene files were right. The art was right, sitting exactly where the scenes expected it. The bug wasn't in the code — it was in git. The new <code>.tscn</code> files referencing that artwork had been committed, but the PNGs they pointed at had never actually been <code>git add</code>ed, so they only ever existed on the machine that made them.</p>
+      <p>Reproducing it properly meant checking out the exact pre-fix commit into a clean <code>git worktree</code> — the same isolation a CI runner or a fresh clone gets, with none of the untracked files quietly sitting in the working directory to mask the problem. That's what a real clean checkout actually did:</p>
+      <div class="compare-row">
+        <figure>
+          <img src="images/05-bug-broken.jpg" alt="A clean checkout of the pre-fix commit — empty board, no track, no trains, autoloads failed to parse">
+          <figcaption><strong>Clean checkout, before the fix</strong>No track, no trains — the missing assets broke autoload parsing entirely</figcaption>
+        </figure>
+        <figure>
+          <img src="images/07-current-battle.jpg" alt="The same board after committing the missing texture files — every car type rendering correctly">
+          <figcaption><strong>Same checkout, after the fix</strong>Every car type rendering, board fully populated</figcaption>
+        </figure>
+      </div>
+      <p>The actual failure was worse than "invisible turrets" — in a genuinely clean checkout, the missing textures cascaded into parse errors on the resources that referenced them, which broke the <code>BuildManager</code> autoload, which broke every script that depended on it. The console made the whole chain legible:</p>
+      <div class="error-log"><code>ERROR: Resource file not found: res://assets/sprites/units/Gunner Car Base.png
+ERROR: res://scenes/Turret.tscn:19 - Parse Error: [ext_resource] referenced non-existent resource
+ERROR: Failed loading resource: res://resources/basic_turret.tres.
+SCRIPT ERROR: Parse Error: Could not preload resource file "res://resources/basic_turret.tres".
+ERROR: Failed to instantiate an autoload, script 'res://scripts/build_manager.gd' does not inherit from 'Node'.</code></div>
+      <p>The fix was mechanical once the actual cause was clear: cross-reference every asset path inside every committed scene, script, and resource against <code>git ls-files</code>, rather than trusting that "it's in the folder" meant "it's in the repo." Seven texture files were missing that way. Committing them, re-verifying in a fresh worktree, and only then pushing closed the loop the same day it was reported.</p>
+    </section>
+
+    <section class="case-study-section">
+      <h2>Where It Is Now</h2>
+      <figure style="margin: 0 0 1.5rem; max-width: 480px;">
+        <img src="images/02-combat.jpg" alt="A train under attack from a swarm of spiders converging from every lane" style="border: 1px solid var(--color-border); border-radius: 8px; width: 100%; display: block;">
+      </figure>
+      <p class="impact-qualitative">The core loop is live and playable: pick a train in STATION mode, attach a car, survive a BATTLE wave, spend the payout on the next one. The roster now includes rapid-fire and splash-damage cars alongside the original Gunner and Slomo, non-combat utility cars that trade weapon slots for economy or hauling capacity, and a railway that circulates continuously instead of reversing at a dead end. The whole thing still ships to a public URL automatically on every push — no manual export step, no "works in the editor" asterisk.</p>
+      <p>It's still explicitly a scaffold rather than a finished game: there's no win/loss condition yet, no restart flow, and the roadmap tracks the gap between what the recovered reference implies and what's actually implemented rather than letting the interface silently promise features that don't exist.</p>
+    </section>
+
+    <section class="case-study-section">
+      <h2>What I Learned</h2>
       <ul class="learnings-list">
-        <li>A scene file that "looks correct" in a diff can still be dead on arrival — the only real proof is launching the thing and looking at the screen</li>
-        <li>Handing an AI pair programmer a reference illustration and asking it to match the mockup, rather than describing the desired UI in words, produced a much closer result than a purely text-based spec would have</li>
-        <li>Deploy automation pays for itself almost immediately on a solo hobby project — not having to remember the export flags or the upload step means changes actually get tested in the real target environment (a browser) instead of "probably works in the editor"</li>
-        <li>Committing to an aesthetic constraint (hand-drawn, imperfect, crooked) early made a lot of later UI decisions easier, not harder — "does this look like a toy box or a settings menu" is a much faster gut check than trying to reason about visual hierarchy from scratch every time</li>
-        <li>"It works on my machine" is a literal, specific hazard when new art assets and the scene files referencing them can get committed in separate, unsynchronized steps — the fix was checking every referenced asset path against <code>git ls-files</code>, not just re-running the game locally</li>
+        <li>A scene file — or a generated diff — that "looks correct" can still be dead on arrival. The only real proof is launching the thing and looking at the screen, in an environment that matches what will actually ship</li>
+        <li>Handing an AI pair programmer a reference image and asking it to match specific, checkable differences produced far better visual results than describing the target style in words</li>
+        <li>"It works on my machine" is a literal, specific hazard the moment new assets and the scene files referencing them can land in separate, unsynchronized commits — the fix is checking every referenced path against what's actually tracked, not re-running the game locally one more time</li>
+        <li>Recovering an old prototype works best as an evidence-gathering exercise, not a spec-reading one — keep what's confirmed, mark what's inferred, and don't let a filename quietly become a design decision</li>
+        <li>Deploy automation pays for itself almost immediately on a solo project — not having to remember an export step means every change gets tested in the real target environment instead of "probably works in the editor"</li>
       </ul>
     </section>
 
