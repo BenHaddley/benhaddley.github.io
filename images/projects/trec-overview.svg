@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="t d">
+<title id="t">TREC Trentham Operations Monitor — interface illustration</title><desc id="d">Schematic illustration of dark geographic map, public monitoring panels and source-linked events. Not a live screenshot.</desc>
+<defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#061726"/><stop offset="1" stop-color="#02101e"/></linearGradient><linearGradient id="panel" x2="1" y2="1"><stop stop-color="#092537"/><stop offset="1" stop-color="#051421"/></linearGradient></defs>
+<rect width="1280" height="720" fill="url(#bg)"/>
+<rect x="18" y="18" width="1244" height="48" rx="5" fill="#091b29" stroke="#16445c"/>
+<rect x="33" y="32" width="21" height="20" fill="#52cbe8"/><text x="70" y="49" font-family="Consolas,monospace" font-weight="700" font-size="23" fill="#d3f7ff">TREC | TRENTHAM OPERATIONS MONITOR</text>
+<text x="1030" y="48" font-size="14" font-family="Consolas,monospace" fill="#7edeea">PUBLIC DATA</text>
+<rect x="18" y="77" width="218" height="626" rx="4" fill="url(#panel)" stroke="#23556c"/>
+<rect x="245" y="77" width="685" height="626" rx="4" fill="#051622" stroke="#23556c"/>
+<rect x="939" y="77" width="323" height="626" rx="4" fill="url(#panel)" stroke="#23556c"/>
+<g font-family="Consolas,monospace" fill="#98d8eb" font-size="17"><text x="33" y="110">MAP LAYERS</text><text x="955" y="110">LIVE SITUATION</text></g>
+<g font-family="Consolas,monospace" font-size="12" fill="#b1eaf2"><text x="35" y="155">WEATHER RADAR</text><text x="35" y="197">NZ INCIDENTS</text><text x="35" y="239">GEONET</text><text x="35" y="281">PUBLIC DEFENCE</text><text x="35" y="323">CIP INTELLIGENCE</text></g>
+<g fill="#4fd2d8"><circle cx="206" cy="150" r="8"/><circle cx="206" cy="193" r="8"/><circle cx="206" cy="235" r="8"/><circle cx="206" cy="277" r="8"/><circle cx="206" cy="319" r="8"/></g>
+<g stroke="#17374a" opacity=".8"><path d="M245 180H930M245 300H930M245 420H930M245 540H930M360 77V703M480 77V703M600 77V703M720 77V703M840 77V703"/></g>
+<path d="M605 139 L591 161 620 178 608 204 580 216 588 249 555 265 574 304 552 347 544 378 511 405 496 451 473 475 480 509 459 539 471 571 452 607 468 626 503 607 511 570 523 536 547 517 563 479 584 458 593 423 625 401 622 376 651 349 635 307 662 278 635 253 651 221 624 197 637 163 617 143 Z" fill="#163847" stroke="#46a4b8" stroke-width="3"/>
+<path d="M502 571 L497 593 515 604 526 590 518 575 Z" fill="#163847" stroke="#46a4b8"/>
+<g stroke="#32a6c8" stroke-width="2" fill="none" opacity=".8"><path d="M580 220Q625 310 567 400T485 576"/><path d="M620 270Q565 299 594 380T530 499"/></g>
+<g fill="#46d8ea" stroke="#0a3045" stroke-width="4"><circle cx="609" cy="265" r="12"/><circle cx="579" cy="367" r="11"/><circle cx="528" cy="482" r="10"/><circle cx="488" cy="551" r="10"/></g>
+<g fill="#fad867" stroke="#102c38" stroke-width="5"><circle cx="630" cy="337" r="14"/><circle cx="558" cy="441" r="14"/></g>
+<g font-family="Consolas,monospace" fill="#e4f6f9" font-size="18"><text x="648" y="260">WAIKATO</text><text x="650" y="354">LOWER NORTH ISLAND</text><text x="614" y="449">TRENTHAM</text></g>
+<g fill="#0a2837" stroke="#2d738b"><rect x="954" y="125" width="291" height="130" rx="4"/><rect x="954" y="269" width="291" height="130" rx="4"/><rect x="954" y="413" width="291" height="120" rx="4"/><rect x="954" y="547" width="291" height="140" rx="4"/></g>
+<g font-family="Consolas,monospace" fill="#7ed8e8" font-size="15"><text x="971" y="150">WEATHER</text><text x="971" y="293">NEWS &amp; ALERTS</text><text x="971" y="436">INTELLIGENCE</text><text x="971" y="573">MEDIA / RADIO</text></g>
+<g font-family="Consolas,monospace" fill="#e6f8fc"><text x="973" y="208" font-size="38">19°</text><text x="1063" y="206" font-size="15">OVERCAST</text><text x="973" y="338" font-size="15">SOURCE-LINKED EVENTS</text><text x="973" y="483" font-size="15">NZ · PACIFIC · GLOBAL</text><text x="973" y="618" font-size="15">NEWS / WEBCAMS / RADIO</text></g>
+<text x="264" y="684" fill="#91c9d5" font-family="Consolas,monospace" font-size="13">SCHEMATIC PORTFOLIO ILLUSTRATION — NOT LIVE OPERATIONAL DATA</text>
+</svg>
